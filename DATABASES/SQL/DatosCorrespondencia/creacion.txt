@@ -1,0 +1,4 @@
+CREATE OR REPLACE TABLE buzon(
+    apartamento VARCHAR(20) PRIMARY KEY,
+    correspondencia TINYINT(1)
+)

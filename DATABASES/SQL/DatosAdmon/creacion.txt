@@ -1,0 +1,12 @@
+CREATE OR REPLACE TABLE evento (
+    consecutivo INT PRIMARY KEY,
+    nombre VARCHAR (80),
+    fecha DATETIME
+);
+CREATE OR REPLACE TABLE cobro (
+    consecutivo INT,
+    fecha DATETIME,
+    cantidad FLOAT,
+    id_usuario VARCHAR(20),
+    PRIMARY KEY (consecutivo,id_usuario)
+);

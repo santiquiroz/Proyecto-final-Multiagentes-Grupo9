@@ -1,0 +1,21 @@
+CREATE OR REPLACE TABLE movimiento(
+    datetimemilis DATETIME(3),
+    valor FLOAT,
+    lugar VARCHAR(20),
+    PRIMARY KEY (datetimemilis,lugar)
+);
+
+CREATE OR REPLACE TABLE luminosidad(
+    datetimemilis DATETIME(3),
+    valor FLOAT,
+    lugar VARCHAR(20),
+    PRIMARY KEY (datetimemilis,lugar)
+);  
+
+CREATE OR REPLACE TABLE temperatura(
+    datetimemilis DATETIME(3),
+    valor FLOAT,
+    lugar VARCHAR(20),
+    PRIMARY KEY (datetimemilis,lugar)
+
+);
