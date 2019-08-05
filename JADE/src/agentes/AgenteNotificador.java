@@ -17,10 +17,11 @@ public class AgenteNotificador extends Agent{
     public Codec codec = new SLCodec();
     public Ontology ontologia = InteraccionUsuarioOntology.getInstance();
     
+    @Override
     protected void setup(){
         
         /**
-         * Esta linea se utiliza cuando se envian argumentos desde
+         * Esta linea se utiliza cuando se envian parametros desde
          * la declaracion de los argumentos
         
         String argumentos;
