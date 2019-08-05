@@ -1,0 +1,71 @@
+; Mon Aug 05 13:58:56 COT 2019
+; 
+;+ (version "3.4.4")
+;+ (build "Build 579")
+
+([AbrirPuertas] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([addresses] of  %3AJADE-SLOT
+
+	(%3AJADE-UNNAMED-SLOT FALSE))
+
+([AgentAction] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE TRUE))
+
+([AID] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE TRUE))
+
+([Concept] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE TRUE))
+
+([IdentidadUsuario] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([InfoNotificacion] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([name] of  %3AJADE-SLOT
+
+	(%3AJADE-UNNAMED-SLOT FALSE))
+
+([Notificacion] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([PredicadoIdentidadUsuario] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Predicate] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE TRUE))
+
+([project+annotation] of  %3APROJECT-ANNOTATION
+
+	(%3ALOCATION "C:\\Users\\David Ospina\\Desktop\\2019-01\\Sistemas Multi-Agente\\ProyectoFinal\\Proyecto-final-Multiagentes\\JADE\\src\\ontologias\\OntologiaInteraccionUsuario")
+	(%3AONTOLOGYNAME "InteraccionUsuario")
+	(%3APACKAGE "org.ibrow.ontology")
+	(%3ASUPPORT "j2se"))
+
+([resolvers] of  %3AJADE-SLOT
+
+	(%3AJADE-UNNAMED-SLOT FALSE))
+
+([SimpleJADEAbstractOntology_00014] of  %3ASTANDARD-FACET
+
+	(%3AASSOCIATED-SLOT [%3AJADE-NAME]))
+
+([SimpleJADEAbstractOntology_00016] of  %3ASTANDARD-FACET
+
+	(%3AASSOCIATED-SLOT [%3AJADE-UNNAMED-SLOT]))
+
+([Verificacion] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
