@@ -7,14 +7,12 @@ import jade.core.*;
 
 /**
 * Protege name: PredicadoIdentidadUsuario
-* @author ontology bean generator
-* @version 2019/08/5, 15:32:15
 */
 public class PredicadoIdentidadUsuario implements Predicate {
 
    /**
    * Contiene una instancia de la identidad de un usuario que haya ingresado al sistema
-* Protege name: InstanciaIdentidadUsuario
+   * Protege name: InstanciaIdentidadUsuario
    */
    private IdentidadUsuario instanciaIdentidadUsuario;
    public void setInstanciaIdentidadUsuario(IdentidadUsuario value) { 

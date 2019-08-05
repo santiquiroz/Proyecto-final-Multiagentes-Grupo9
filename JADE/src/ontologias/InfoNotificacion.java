@@ -15,7 +15,7 @@ public class InfoNotificacion implements Concept {
 
    /**
    * Identificador unico para cada uno de los usuarios
-* Protege name: IdentificacionUsuario
+   * Protege name: IdentificacionUsuario
    */
    private String identificacionUsuario;
    public void setIdentificacionUsuario(String value) { 
@@ -27,7 +27,7 @@ public class InfoNotificacion implements Concept {
 
    /**
    * Como lo indica el nombre es el contenido del mensaje de notificaci�n para el usuario
-* Protege name: Contenido
+   * Protege name: Contenido
    */
    private String contenido;
    public void setContenido(String value) { 

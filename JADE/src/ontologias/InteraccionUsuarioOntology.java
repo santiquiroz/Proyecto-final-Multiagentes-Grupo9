@@ -8,8 +8,6 @@ import jade.content.lang.Codec;
 import jade.core.CaseInsensitiveString;
 
 /** file: InteraccionUsuarioOntology.java
- * @author ontology bean generator
- * @version 2019/08/5, 15:32:15
  */
 public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
   //NAME
