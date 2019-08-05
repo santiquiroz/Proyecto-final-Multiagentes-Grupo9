@@ -1,2 +1,0 @@
--gui -gui aeq1b1:agentes.agente()
- -container -host nombreHost 
