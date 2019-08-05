@@ -9,7 +9,7 @@ import jade.core.CaseInsensitiveString;
 
 /** file: InteraccionUsuarioOntology.java
  * @author ontology bean generator
- * @version 2019/08/5, 13:59:30
+ * @version 2019/08/5, 15:32:15
  */
 public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -28,6 +28,8 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
     public static final String VERIFICACION_CONTENIDOVERIFICACION="ContenidoVerificacion";
     public static final String VERIFICACION="Verificacion";
     public static final String ABRIRPUERTAS="AbrirPuertas";
+    public static final String ENCENDERLAMPARA="EncenderLampara";
+    public static final String ACTIVARVENTILACION="ActivarVentilacion";
     public static final String NOTIFICACION="Notificacion";
     public static final String INFONOTIFICACION_CONTENIDO="Contenido";
     public static final String INFONOTIFICACION_IDENTIFICACIONUSUARIO="IdentificacionUsuario";
@@ -51,6 +53,10 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
     // adding AgentAction(s)
     AgentActionSchema notificacionSchema = new AgentActionSchema(NOTIFICACION);
     add(notificacionSchema, ontology.Notificacion.class);
+    AgentActionSchema activarVentilacionSchema = new AgentActionSchema(ACTIVARVENTILACION);
+    add(activarVentilacionSchema, ontology.ActivarVentilacion.class);
+    AgentActionSchema encenderLamparaSchema = new AgentActionSchema(ENCENDERLAMPARA);
+    add(encenderLamparaSchema, ontology.EncenderLampara.class);
     AgentActionSchema abrirPuertasSchema = new AgentActionSchema(ABRIRPUERTAS);
     add(abrirPuertasSchema, ontology.AbrirPuertas.class);
     AgentActionSchema verificacionSchema = new AgentActionSchema(VERIFICACION);

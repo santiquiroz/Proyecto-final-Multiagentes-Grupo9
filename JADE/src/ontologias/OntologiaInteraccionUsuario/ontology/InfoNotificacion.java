@@ -9,7 +9,7 @@ import jade.core.*;
    * Contiene la informacion de la notificación a mostrar en el dispositivo movil y el identificador unico del usuario a quien va dirigida dicha notificacion
 * Protege name: InfoNotificacion
 * @author ontology bean generator
-* @version 2019/08/5, 13:59:30
+* @version 2019/08/5, 15:32:15
 */
 public class InfoNotificacion implements Concept {
 

@@ -1,4 +1,4 @@
-; Mon Aug 05 13:58:56 COT 2019
+; Mon Aug 05 15:31:00 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -220,6 +220,14 @@
 		(create-accessor read-write)))
 
 (defclass AbrirPuertas "Como o indica al nombre es la accion de abrir las puertas despues de haber ingresado la verificacion de un usuario"
+	(is-a AgentAction)
+	(role concrete))
+
+(defclass EncenderLampara "Activar o desactivar lámpara de la portería según los datos de luminosidad de la portería."
+	(is-a AgentAction)
+	(role concrete))
+
+(defclass ActivarVentilacion "Activar o desactivar el ventilador conectado a la red según  los datos de temperatura."
 	(is-a AgentAction)
 	(role concrete))
 

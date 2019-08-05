@@ -1,9 +1,13 @@
-; Mon Aug 05 13:58:56 COT 2019
+; Mon Aug 05 15:31:00 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
 
 ([AbrirPuertas] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([ActivarVentilacion] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
@@ -22,6 +26,10 @@
 ([Concept] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE TRUE))
+
+([EncenderLampara] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
 
 ([IdentidadUsuario] of  %3AJADE-CLASS
 
@@ -51,7 +59,7 @@
 
 	(%3ALOCATION "C:\\Users\\David Ospina\\Desktop\\2019-01\\Sistemas Multi-Agente\\ProyectoFinal\\Proyecto-final-Multiagentes\\JADE\\src\\ontologias\\OntologiaInteraccionUsuario")
 	(%3AONTOLOGYNAME "InteraccionUsuario")
-	(%3APACKAGE "org.ibrow.ontology")
+	(%3APACKAGE "ontology")
 	(%3ASUPPORT "j2se"))
 
 ([resolvers] of  %3AJADE-SLOT
