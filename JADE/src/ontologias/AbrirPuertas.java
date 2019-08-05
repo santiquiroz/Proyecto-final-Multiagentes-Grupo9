@@ -1,4 +1,4 @@
-package ontology;
+package ontologias;
 
 
 import jade.content.*;

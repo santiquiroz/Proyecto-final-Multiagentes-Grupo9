@@ -1,4 +1,4 @@
-package ontology;
+package ontologias;
 
 
 import jade.content.*;
@@ -6,7 +6,7 @@ import jade.util.leap.*;
 import jade.core.*;
 
 /**
-   * Activar o desactivar lámpara de la portería según los datos de luminosidad de la portería.
+   * Activar o desactivar lï¿½mpara de la porterï¿½a segï¿½n los datos de luminosidad de la porterï¿½a.
 * Protege name: EncenderLampara
 * @author ontology bean generator
 * @version 2019/08/5, 15:32:15

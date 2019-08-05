@@ -1,4 +1,4 @@
-package ontology;
+package ontologias;
 
 
 import jade.content.*;
@@ -14,7 +14,7 @@ import jade.core.*;
 public class IdentidadUsuario implements Concept {
 
    /**
-   * por medio del agente identificador se reconoce el tipo de usuario que desea interactuar. Esto es necesario pues dependiendo del tipo de usuario se proporcionará una interacción distinta.
+   * por medio del agente identificador se reconoce el tipo de usuario que desea interactuar. Esto es necesario pues dependiendo del tipo de usuario se proporcionarï¿½ una interacciï¿½n distinta.
 * Protege name: TipoUsuario
    */
    private String tipoUsuario;

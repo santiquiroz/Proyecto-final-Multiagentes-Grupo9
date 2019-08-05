@@ -1,4 +1,4 @@
-package ontology;
+package ontologias;
 
 
 import jade.content.*;
@@ -6,7 +6,7 @@ import jade.util.leap.*;
 import jade.core.*;
 
 /**
-   * Contiene la informacion de la notificación a mostrar en el dispositivo movil y el identificador unico del usuario a quien va dirigida dicha notificacion
+   * Contiene la informacion de la notificaciï¿½n a mostrar en el dispositivo movil y el identificador unico del usuario a quien va dirigida dicha notificacion
 * Protege name: InfoNotificacion
 * @author ontology bean generator
 * @version 2019/08/5, 15:32:15
@@ -26,7 +26,7 @@ public class InfoNotificacion implements Concept {
    }
 
    /**
-   * Como lo indica el nombre es el contenido del mensaje de notificación para el usuario
+   * Como lo indica el nombre es el contenido del mensaje de notificaciï¿½n para el usuario
 * Protege name: Contenido
    */
    private String contenido;
