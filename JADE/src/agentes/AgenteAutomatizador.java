@@ -6,6 +6,7 @@
 package agentes;
 
 import jade.core.Agent;
+import Comportamientos.*;
 
 /**
  *
@@ -13,7 +14,7 @@ import jade.core.Agent;
  */
 public class AgenteAutomatizador extends Agent{
     protected void setup() {
-        
+        addBehaviour(new ComportamientoAutomatizador());
     }
 }
     
