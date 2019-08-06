@@ -1,4 +1,4 @@
-; Mon Aug 05 15:31:00 COT 2019
+; Tue Aug 06 11:11:27 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -48,6 +48,10 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([PredicadoIdentidadUsuario] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([PredicadoInfoNotificacion] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

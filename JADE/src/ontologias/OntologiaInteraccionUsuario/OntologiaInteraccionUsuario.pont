@@ -1,4 +1,4 @@
-; Mon Aug 05 15:31:00 COT 2019
+; Tue Aug 06 11:11:27 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -64,6 +64,12 @@
 	(single-slot %3ALOCATION
 ;+		(comment "The location to store files into")
 		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot SlotInfoNotificacio
+;+		(comment "Es un predicado utilizado para enviar la informacon de la notificaión")
+		(type SYMBOL)
+;+		(allowed-parents InfoNotificacion)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot %3AJADE-INCLUDED-PROPERTIES
@@ -168,13 +174,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot %3APACKAGE
-;+		(comment "packagename")
+	(single-slot %3AONTOLOGYNAME
+;+		(comment "name of the ontology")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot %3AONTOLOGYNAME
-;+		(comment "name of the ontology")
+	(single-slot %3APACKAGE
+;+		(comment "packagename")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -267,5 +273,15 @@
 ;+		(comment "Contiene una instancia de la identidad de un usuario que haya ingresado al sistema")
 		(type INSTANCE)
 ;+		(allowed-classes IdentidadUsuario)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass PredicadoInfoNotificacion
+	(is-a Predicate)
+	(role concrete)
+	(single-slot SlotInfoNotificacio
+;+		(comment "Es un predicado utilizado para enviar la informacon de la notificaión")
+		(type SYMBOL)
+;+		(allowed-parents InfoNotificacion)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))

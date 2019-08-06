@@ -19,7 +19,7 @@ public class Conexion {
     private String password = "";
     private String url = "jdbc:mysql://localhost:3306/datosusuario";
     
-    public Conexion (){
+    public Conexion () throws ClassNotFoundException{
         conn = null;
         try{
             Class.forName(driver);
@@ -27,11 +27,11 @@ public class Conexion {
             if(conn!= null){
                 System.out.println("conexion establecida!");
             }
-        }catch (ClassNotFoundException | SQLException e){
-            System.out.println("conexion fallida: "+e);
+        } catch (SQLException e) { 
+            System.out.println("conexion fallida: " + e);
         }
     }
-    public Conexion (String url){
+    public Conexion (String url) throws ClassNotFoundException{
         this.url = url;
         conn = null;
         try{
@@ -40,11 +40,11 @@ public class Conexion {
             if(conn!= null){
                 System.out.println("conexion establecida!");
             }
-        }catch (ClassNotFoundException | SQLException e){
+        }catch (SQLException e) {
             System.out.println("conexion fallida: "+e);
         }
     }
-    public Conexion (String url, String user, String password){
+    public Conexion (String url, String user, String password) throws ClassNotFoundException{
         this.url = url;
         this.user = user;
         this.password = password;
@@ -55,7 +55,7 @@ public class Conexion {
             if(conn!= null){
                 System.out.println("conexion establecida!");
             }
-        }catch (ClassNotFoundException | SQLException e){
+        }catch (SQLException e) {
             System.out.println("conexion fallida: "+e);
         }
     }

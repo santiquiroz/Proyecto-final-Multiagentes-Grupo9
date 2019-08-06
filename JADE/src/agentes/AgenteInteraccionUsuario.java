@@ -12,23 +12,10 @@ public class AgenteInteraccionUsuario extends Agent{
     public Codec codec = new SLCodec();
     public Ontology ontologia = InteraccionUsuarioOntology.getInstance();
     
+    @Override
     protected void setup(){
-        
-        /**
-         * Esta linea se utiliza cuando se envian argumentos desde
-         * la declaracion de los argumentos
-        
-        String argumentos;
-        Object[] args = getArguments();
-        argumentos = args[0].toString();
-        if (argumentos.equals("terminar agente")){            
-            System.out.println("terminando agente");   
-            doDelete();
-        }
-        
-        */
-        
-        addBehaviour(new ComportamientoInteraccionUsuario());
+               
+        addBehaviour(new ComportamientoInteraccionUsuario(this));
         
     }
 }
