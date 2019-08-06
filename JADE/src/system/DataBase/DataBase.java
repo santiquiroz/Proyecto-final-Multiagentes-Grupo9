@@ -46,6 +46,16 @@ public class DataBase {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public int update(String SQL){
+        int resultadoActualizacion=-1;
+        try {
+             st = conn.getConection().prepareStatement(SQL);
+             resultadoActualizacion = st.executeUpdate(SQL);
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultadoActualizacion;
+    }
     public int delete(String SQL){
         int resultadoActualizacion=-1;
         try {
