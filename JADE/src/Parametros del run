@@ -1,3 +1,0 @@
-run parameters:
-
--gui -gui Au:agentes.AgenteAutomatizador()

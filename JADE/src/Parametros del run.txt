@@ -1,0 +1,3 @@
+run parameters:
+
+-gui AgenteAutomatizador:agentes.AgenteAutomatizador();AgenteIdentificador:agentes.AgenteIdentidicador();AgenteInteraccionUsuario:agentes.AgenteInteraccionUsuario();AgenteNotificador:agentes.AgenteNotificador();
