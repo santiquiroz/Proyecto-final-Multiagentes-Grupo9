@@ -31,6 +31,34 @@ public class Conexion {
             System.out.println("conexion fallida: "+e);
         }
     }
+    public Conexion (String url){
+        this.url = url;
+        conn = null;
+        try{
+            Class.forName(driver);
+            conn = (Connection) DriverManager.getConnection(url,user,password);
+            if(conn!= null){
+                System.out.println("conexion establecida!");
+            }
+        }catch (ClassNotFoundException | SQLException e){
+            System.out.println("conexion fallida: "+e);
+        }
+    }
+    public Conexion (String url, String user, String password){
+        this.url = url;
+        this.user = user;
+        this.password = password;
+        conn = null;
+        try{
+            Class.forName(driver);
+            conn = (Connection) DriverManager.getConnection(url,user,password);
+            if(conn!= null){
+                System.out.println("conexion establecida!");
+            }
+        }catch (ClassNotFoundException | SQLException e){
+            System.out.println("conexion fallida: "+e);
+        }
+    }
     
     /*
     metodo para obtener la conexion activa a la base de datos.
@@ -47,4 +75,14 @@ public class Conexion {
             System.out.println("conexion terminada con exito !");
         }
     }
+    /*
+    Ejemplo de coenctar
+    Conexion con;
+    con = new Conectar();
+    Connection reg = con.getConnection();
+    */
+    /*
+    Ejemplo de desconectar
+    con.desconectar();
+    */
 }
