@@ -6,8 +6,6 @@ package system.DataBase;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +17,7 @@ public class DataBase {
     
     private Conexion conn;
     private PreparedStatement st;
-    private ArrayList resultado;
+    private ResultSet resultado;
     
     public DataBase() {
         try {
@@ -42,18 +40,10 @@ public class DataBase {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public HashMap select(String SQL){
+    public ResultSet select(String SQL){
         try {
              st = conn.getConection().prepareStatement(SQL);
-            ResultSet consulta = st.executeQuery();
-            //convirtiendo la consulta a un arreglo
-            //obtengo numero de columnas
-            int numColumnas = consulta.getMetaData().getColumnCount();
-            //recorriendo el resultado de la consulta y guardando este en un HashMap
-            
-            
-            
-            
+            resultado = st.executeQuery(SQL);
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
