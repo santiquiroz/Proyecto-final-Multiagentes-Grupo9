@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,13 +19,17 @@ public class DataBase {
     private Conexion conn;
     private PreparedStatement st;
     private ArrayList resultado;
-    
+    private ArrayList nombresColumnas;
+    private int numColumnas;
+    private ResultSet consulta;
     public DataBase() {
         try {
             conn = new Conexion();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resultado=new ArrayList();
+        nombresColumnas = new ArrayList();
     }
     public DataBase(String url) {
         try {
@@ -34,6 +37,8 @@ public class DataBase {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resultado=new ArrayList();
+        nombresColumnas = new ArrayList();
     }
     public DataBase(String url,String user,String password){
         try {
@@ -41,17 +46,31 @@ public class DataBase {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
+        resultado=new ArrayList();
+        nombresColumnas = new ArrayList();
     }
-    public HashMap select(String SQL){
+    
+    public ArrayList select(String SQL){
         try {
              st = conn.getConection().prepareStatement(SQL);
-            ResultSet consulta = st.executeQuery();
+            consulta = st.executeQuery();
             //convirtiendo la consulta a un arreglo
             //obtengo numero de columnas
-            int numColumnas = consulta.getMetaData().getColumnCount();
-            //recorriendo el resultado de la consulta y guardando este en un HashMap
-            
-            
+            numColumnas = consulta.getMetaData().getColumnCount();
+            //obteniendo los nombres de columnas(claves del hashmap)
+            System.out.println("numero de columnas: "+numColumnas);
+            for (int i = 1; i <= numColumnas; i++) {
+                String nombre =consulta.getMetaData().getColumnName(i);
+                nombresColumnas.add(nombre);
+                resultado.add(new ArrayList());
+            }
+            //recorriendo el resultado de la consulta y guardando este en un ArrayList  
+            while (this.consulta.next()) {
+                for (int i = 1; i <= numColumnas; i++) {
+                    Object valor = consulta.getObject(i);
+                    ((ArrayList)resultado.get(i-1)).add(valor);
+                }
+            }
             
             
         } catch (SQLException ex) {
@@ -87,5 +106,23 @@ public class DataBase {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultadoActualizacion;
+    }
+    
+    
+    public String getValueOn(int fila, int columna){
+        return String.valueOf(((ArrayList)resultado.get(columna)).get(fila));
+    }
+    
+    public ArrayList getColumnNames(){
+        return nombresColumnas;
+    }
+    public ArrayList getLastResult(){
+        return resultado;
+    }
+    public ResultSet getLastResultSet(){
+        return consulta;
+    }
+    public int getColumnNum(){
+        return numColumnas;
     }
 }
