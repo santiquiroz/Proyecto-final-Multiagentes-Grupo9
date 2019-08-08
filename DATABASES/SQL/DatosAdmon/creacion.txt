@@ -1,12 +1,14 @@
 CREATE OR REPLACE TABLE evento (
     consecutivo INT PRIMARY KEY,
     nombre VARCHAR (80),
-    fecha DATETIME
+    fecha DATETIME,
+    notificado TINYINT(1)
 );
 CREATE OR REPLACE TABLE cobro (
     consecutivo INT,
     fecha DATETIME,
     cantidad FLOAT,
     id_usuario VARCHAR(20),
-    PRIMARY KEY (consecutivo,id_usuario)
+    PRIMARY KEY (consecutivo,id_usuario),
+    notificado TINYINT(1)
 );
