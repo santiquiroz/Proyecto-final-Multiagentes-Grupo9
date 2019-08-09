@@ -4,7 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/santi/Documents/GitHub/Proyecto-final-Multiagentes/JADE/src/actores/Usuario.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/Proyecto-final-Multiagentes/JADE/src/ontologias/InfoNotificacion.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/Proyecto-final-Multiagentes/JADE/src/ontologias/Notificacion.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/Proyecto-final-Multiagentes/JADE/src/agentes/AgenteAutomatizador.java</file>
         </group>
     </open-files>
 </project-private>
