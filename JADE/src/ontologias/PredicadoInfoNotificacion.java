@@ -8,23 +8,20 @@ import jade.core.*;
 /**
 * Protege name: PredicadoInfoNotificacion
 * @author ontology bean generator
-* @version 2019/08/6, 11:12:30
+* @version 2019/08/10, 16:27:01
 */
 public class PredicadoInfoNotificacion implements Predicate {
 
    /**
-   * Es un predicado utilizado para enviar la informacon de la notificaiï¿½n
-   * Protege name: SlotInfoNotificacio
+   * Es un predicado utilizado para enviar la informacon de la notificaión
+* Protege name: SlotInfoNotificacio
    */
-    
    private InfoNotificacion slotInfoNotificacio;
-   
-   public void setSlotInfoNotificacio(InfoNotificacion value) {     
-        this.slotInfoNotificacio = value;
+   public void setSlotInfoNotificacio(InfoNotificacion value) { 
+    this.slotInfoNotificacio=value;
    }
-   
    public InfoNotificacion getSlotInfoNotificacio() {
      return this.slotInfoNotificacio;
    }
-   
+
 }

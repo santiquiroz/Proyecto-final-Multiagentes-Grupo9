@@ -7,12 +7,14 @@ import jade.core.*;
 
 /**
 * Protege name: Verificacion
+* @author ontology bean generator
+* @version 2019/08/10, 16:27:01
 */
 public class Verificacion implements AgentAction {
 
    /**
    * Mensaje que se e muestra al usuario despues de haber intentado registrarse
-   * Protege name: ContenidoVerificacion
+* Protege name: ContenidoVerificacion
    */
    private String contenidoVerificacion;
    public void setContenidoVerificacion(String value) { 

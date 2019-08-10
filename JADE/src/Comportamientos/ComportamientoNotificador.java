@@ -18,10 +18,7 @@ import ontologias.PredicadoInfoNotificacion;
  */
 
 public class ComportamientoNotificador extends TickerBehaviour{
-    
-    public Codec codec = new SLCodec();
-    public Ontology ontologia = InteraccionUsuarioOntology.getInstance();
-    
+        
     AgenteNotificador agent;
     
     public ComportamientoNotificador(Agent a, long period) {
@@ -40,8 +37,8 @@ public class ComportamientoNotificador extends TickerBehaviour{
             ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
             msg.setSender(agent.getAID());
             msg.addReceiver(AgentID);
-            msg.setLanguage(codec.getName());
-            msg.setOntology(ontologia.getName());
+            msg.setLanguage(agent.codec.getName());
+            msg.setOntology(agent.ontologia.getName());
             
             String idUser = "xxxxx";
             String contenido = "Mensaje por defecto.";
@@ -53,12 +50,13 @@ public class ComportamientoNotificador extends TickerBehaviour{
             PredicadoInfoNotificacion pInfoNot = new PredicadoInfoNotificacion();
             pInfoNot.setSlotInfoNotificacio(infoNot);
            
-            System.out.println("Prueba");
+            
             agent.getContentManager().fillContent(msg, pInfoNot);
+            System.out.println("Prueba");
             agent.send(msg);
                         
-        }catch(Codec.CodecException e){} 
-         catch (OntologyException e) {}
+        }catch(Codec.CodecException e){e.printStackTrace();} 
+         catch (OntologyException e) { e.printStackTrace();}
         
     }
 

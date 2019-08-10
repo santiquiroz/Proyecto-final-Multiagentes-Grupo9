@@ -14,6 +14,12 @@ public class AgenteInteraccionUsuario extends Agent{
     
     @Override
     protected void setup(){
+        
+        getContentManager().registerLanguage(codec);
+        getContentManager().registerOntology(ontologia);
+        Comportamientos.ComportamientoInteraccionUsuario PingBehaviour;
+        PingBehaviour = new ComportamientoInteraccionUsuario(this);
+        addBehaviour(PingBehaviour);
                
         addBehaviour(new ComportamientoInteraccionUsuario(this));
         

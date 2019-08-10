@@ -8,6 +8,8 @@ import jade.content.lang.Codec;
 import jade.core.CaseInsensitiveString;
 
 /** file: InteraccionUsuarioOntology.java
+ * @author ontology bean generator
+ * @version 2019/08/10, 16:27:01
  */
 public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -21,6 +23,8 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
 
 
    // VOCABULARY
+    public static final String PREDICADOINFONOTIFICACION_SLOTINFONOTIFICACIO="SlotInfoNotificacio";
+    public static final String PREDICADOINFONOTIFICACION="PredicadoInfoNotificacion";
     public static final String PREDICADOIDENTIDADUSUARIO_INSTANCIAIDENTIDADUSUARIO="InstanciaIdentidadUsuario";
     public static final String PREDICADOIDENTIDADUSUARIO="PredicadoIdentidadUsuario";
     public static final String VERIFICACION_CONTENIDOVERIFICACION="ContenidoVerificacion";
@@ -65,6 +69,8 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
     // adding Predicate(s)
     PredicateSchema predicadoIdentidadUsuarioSchema = new PredicateSchema(PREDICADOIDENTIDADUSUARIO);
     add(predicadoIdentidadUsuarioSchema, ontologias.PredicadoIdentidadUsuario.class);
+    PredicateSchema predicadoInfoNotificacionSchema = new PredicateSchema(PREDICADOINFONOTIFICACION);
+    add(predicadoInfoNotificacionSchema, ontologias.PredicadoInfoNotificacion.class);
 
 
     // adding fields
@@ -73,6 +79,7 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
     infoNotificacionSchema.add(INFONOTIFICACION_CONTENIDO, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
     verificacionSchema.add(VERIFICACION_CONTENIDOVERIFICACION, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
     predicadoIdentidadUsuarioSchema.add(PREDICADOIDENTIDADUSUARIO_INSTANCIAIDENTIDADUSUARIO, identidadUsuarioSchema, ObjectSchema.OPTIONAL);
+    predicadoInfoNotificacionSchema.add(PREDICADOINFONOTIFICACION_SLOTINFONOTIFICACIO, infoNotificacionSchema, ObjectSchema.OPTIONAL);
 
     // adding name mappings
 
