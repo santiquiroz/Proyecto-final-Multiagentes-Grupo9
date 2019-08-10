@@ -1,0 +1,55 @@
+// Block definition (there may be more than one block per file)
+FUNCTION_BLOCK fuzzy
+
+// Define input variables
+VAR_INPUT
+    luminocidad : REAL;
+    presencia : REAL;
+END_VAR
+
+// Define output variable
+VAR_OUTPUT
+    activacion : REAL;
+END_VAR
+
+// Fuzzify input variable 'luminocidad'
+FUZZIFY luminocidad
+    TERM MuchaLuz := (32,1) (173,1) (314,0);
+    TERM LuzModerada := (173,0) (314,1) (455,1) (596,0);
+    TERM PocaLuz := (455,0) (596,1) (737,1) (879,0);
+    TERM SinLuz := (737,0) (878,1) (1024,1);
+END_FUZZIFY
+
+// Fuzzify input variable 'presnecia'
+FUZZIFY presencia
+    TERM SinPersonas := (-1,1) (0.99,1) (1,0);
+    TERM ConPersonas := (0.99,0) (1,1) (15,1);
+END_FUZZIFY
+
+// Defzzzify output variable 'activacion'
+DEFUZZIFY activacion
+    TERM Apagado := (-1,1) (0.99,1) (1,0);
+    TERM Encendido := (0.99,0) (1,1) (2,1);
+    // Use 'Center Of Gravity' defuzzification method
+    METHOD : COG;
+    // Default value is 0 (if no rule activates defuzzifier)
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+    // Use 'min' for 'and' (also implicit use 'max'
+    // for 'or' to fulfill DeMorgan's Law)
+    AND : MIN;
+    ACT : MIN;  // Use 'min' activation method
+    ACCU : MAX; // Use 'max' accumulation method
+
+    RULE 1: IF presencia IS SinPersonas THEN activacion IS Apagado;
+    RULE 2: IF luminocidad IS SinLuz AND presencia IS ConPersonas THEN activacion IS Encendido;
+    RULE 3: IF luminocidad IS PocaLuz AND presencia IS ConPersonas THEN activacion IS Encendido;
+    RULE 4: IF luminocidad IS LuzModerada AND presencia IS ConPersonas THEN activacion IS Apagado;
+    RULE 5: IF luminocidad IS LuzModerada AND presencia IS ConPersonas THEN activacion IS Apagado;
+    
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
