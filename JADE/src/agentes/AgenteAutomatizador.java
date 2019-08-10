@@ -17,7 +17,7 @@ public class AgenteAutomatizador extends Agent{
     @Override
     protected void setup() {
         addBehaviour(new ComportamientoAutomatizador());
-        //Notificacion notificacion = new Notificacion();
+        Notificacion notificacion = new Notificacion();
         try {
             new ConexionArduino().conectar();
         } catch (IOException ex) {

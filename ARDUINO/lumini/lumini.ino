@@ -21,6 +21,6 @@ void loop() {
     }
   }
   lumin = analogRead(A2);
-  Serial.println(lumin);
+  //Serial.println(lumin);
   delay(50);
 }
