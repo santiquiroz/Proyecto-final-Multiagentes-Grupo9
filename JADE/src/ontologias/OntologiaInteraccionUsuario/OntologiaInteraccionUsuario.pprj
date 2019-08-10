@@ -1,4 +1,4 @@
-; Tue Aug 06 11:11:27 COT 2019
+; Sat Aug 10 16:35:40 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -6,8 +6,8 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[OntologiaInteraccionUsuario_ProjectKB_Class9]
-		[OntologiaInteraccionUsuario_ProjectKB_Class10]))
+		[OntologiaInteraccionUsuario_ProjectKB_Class4]
+		[OntologiaInteraccionUsuario_ProjectKB_Class5]))
 
 ([CLSES_TAB] of  Widget
 
@@ -83,7 +83,7 @@
 
 	(name "layout properties"))
 
-([KB_715416_Class3] of  Map
+([KB_067079_Class3] of  Map
 )
 
 ([KB_883944_Instance_0] of  Property_List
@@ -457,36 +457,36 @@
 	(x 0)
 	(y 120))
 
-([OntologiaInteraccionUsuario_ProjectKB_Class10] of  String
+([OntologiaInteraccionUsuario_ProjectKB_Class4] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([OntologiaInteraccionUsuario_ProjectKB_Class5] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([OntologiaInteraccionUsuario_ProjectKB_Class11] of  Map_Entry
+([OntologiaInteraccionUsuario_ProjectKB_Class6] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([OntologiaInteraccionUsuario_ProjectKB_Class12] of  Map_Entry
+([OntologiaInteraccionUsuario_ProjectKB_Class7] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([OntologiaInteraccionUsuario_ProjectKB_Class13] of  Map_Entry
+([OntologiaInteraccionUsuario_ProjectKB_Class8] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
-
-([OntologiaInteraccionUsuario_ProjectKB_Class9] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
 
 ([PAL_FORM_WIDGET] of  Widget
 
@@ -504,8 +504,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[SimpleJADEAbstractOntology_ProjectKB_00109]
-		[SimpleJADEAbstractOntology_ProjectKB_00303]
 		[SimpleJADEAbstractOntology_ProjectKB_00503]
+		[SimpleJADEAbstractOntology_ProjectKB_00303]
 		[SimpleJADEAbstractOntology_ProjectKB_00104]
 		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
@@ -715,9 +715,9 @@
 ([SimpleJADEAbstractOntology_ProjectKB_00214] of  Map
 
 	(entries
-		[OntologiaInteraccionUsuario_ProjectKB_Class11]
-		[OntologiaInteraccionUsuario_ProjectKB_Class12]
-		[OntologiaInteraccionUsuario_ProjectKB_Class13]))
+		[OntologiaInteraccionUsuario_ProjectKB_Class6]
+		[OntologiaInteraccionUsuario_ProjectKB_Class7]
+		[OntologiaInteraccionUsuario_ProjectKB_Class8]))
 
 ([SimpleJADEAbstractOntology_ProjectKB_00303] of  Widget
 

@@ -1,4 +1,4 @@
-; Tue Aug 06 11:11:27 COT 2019
+; Sat Aug 10 16:35:40 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -174,13 +174,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot %3AONTOLOGYNAME
-;+		(comment "name of the ontology")
+	(single-slot %3APACKAGE
+;+		(comment "packagename")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot %3APACKAGE
-;+		(comment "packagename")
+	(single-slot %3AONTOLOGYNAME
+;+		(comment "name of the ontology")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))

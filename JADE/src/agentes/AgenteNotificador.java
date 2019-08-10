@@ -15,6 +15,7 @@ import jade.lang.acl.ACLMessage;
 import ontologias.InfoNotificacion;
 import ontologias.InteraccionUsuarioOntology;
 import ontologias.PredicadoInfoNotificacion;
+import Comportamientos.ComportamientoNotificador;
 
 /**
  *
@@ -49,66 +50,5 @@ public class AgenteNotificador extends Agent {
         addBehaviour(EnviarNotiBehaviour);
 
     }
-    
-    
-    //
-    //
-    //Class comportamiento
-    //
-    //
-    public class ComportamientoNotificador extends TickerBehaviour {
-
-        AgenteNotificador agent;
-
-        public ComportamientoNotificador(Agent a, long period) {
-            super(a, period);
-            agent = (AgenteNotificador) a;
-        }
-
-        @Override
-        protected void onTick() {
-
-            try {
-
-                String destinatario = "AgenteInteraccionUsuario";
-                AID AgentID = new AID();
-                AgentID.setLocalName(destinatario);
-                ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-                msg.setSender(getAID());
-                msg.addReceiver(AgentID);
-                msg.setLanguage(codec.getName());
-                msg.setOntology(ontologia.getName());
-
-                String idUser = "xxxxx";
-                String contenido = "Mensaje por defecto.";
-
-                InfoNotificacion infoNot = new InfoNotificacion();
-                infoNot.setIdentificacionUsuario(idUser);
-                infoNot.setContenido(contenido);
-
-                PredicadoInfoNotificacion pInfoNot = new PredicadoInfoNotificacion();
-                pInfoNot.setSlotInfoNotificacio(infoNot);
-
-                getContentManager().fillContent(msg, pInfoNot);
-                System.out.println("Prueba");
-                send(msg);
-
-            } catch (Codec.CodecException e) {
-                e.printStackTrace();
-            } catch (OntologyException e) {
-                e.printStackTrace();
-            }
-
-        }
-        //
-        //End Comporta
-        
-    }
-
-    
-    
-    
-    
-    
     
 }

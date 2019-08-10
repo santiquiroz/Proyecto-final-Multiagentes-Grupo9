@@ -1,4 +1,4 @@
-; Tue Aug 06 11:11:27 COT 2019
+; Sat Aug 10 16:35:40 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -61,9 +61,9 @@
 
 ([project+annotation] of  %3APROJECT-ANNOTATION
 
-	(%3ALOCATION "C:\\Users\\David Ospina\\Desktop\\2019-01\\Sistemas Multi-Agente\\ProyectoFinal\\Proyecto-final-Multiagentes\\JADE\\src\\ontologias\\OntologiaInteraccionUsuario")
+	(%3ALOCATION "C:\\Users\\David Ospina\\Desktop\\2019-01\\Sistemas Multi-Agente\\Proyecto-final-Multiagentes\\JADE\\src\\ontologias")
 	(%3AONTOLOGYNAME "InteraccionUsuario")
-	(%3APACKAGE "ontology")
+	(%3APACKAGE "ontologias")
 	(%3ASUPPORT "j2se"))
 
 ([resolvers] of  %3AJADE-SLOT
