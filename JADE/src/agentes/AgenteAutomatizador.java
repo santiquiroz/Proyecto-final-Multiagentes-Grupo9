@@ -18,11 +18,8 @@ public class AgenteAutomatizador extends Agent{
     protected void setup() {
         addBehaviour(new ComportamientoAutomatizador());
         Notificacion notificacion = new Notificacion();
-        try {
-            new ConexionArduino().conectar();
-        } catch (IOException ex) {
-            Logger.getLogger(AgenteAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        new ConexionArduino();
+        
     }
 }
     
