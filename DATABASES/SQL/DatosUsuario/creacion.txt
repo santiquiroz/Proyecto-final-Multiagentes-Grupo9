@@ -1,5 +1,6 @@
 CREATE OR REPLACE TABLE usuario (
     identificacion VARCHAR(20) PRIMARY KEY,
+    correo Varchar(20),
     rol VARCHAR(20),
     nombre VARCHAR(20),
     apartamento VARCHAR(20)
