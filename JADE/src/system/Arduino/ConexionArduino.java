@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author santi
  */
-public class Conexion {
+public class ConexionArduino {
 
     public void conectar() throws IOException {
         SerialPort sp = SerialPort.getCommPort("COM4 (Arduino/Genuino Uno"); // device name TODO: must be changed
@@ -36,7 +36,7 @@ public class Conexion {
                 System.out.println("Sent number: " + i);
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexionArduino.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
