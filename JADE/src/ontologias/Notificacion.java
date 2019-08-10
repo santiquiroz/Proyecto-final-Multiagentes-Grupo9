@@ -22,7 +22,7 @@ public class Notificacion implements AgentAction {
 
     public Notificacion (){
         super();
-        new MailSender().send("squirozu@unal.edu.co", "Correo informativo", "Este es un puto correo de prueba.");
+        new MailSender().send("squirozu@unal.edu.co, dospinao@unal.edu.co", "Correo informativo", "Este es un puto correo de prueba.");
     
     }
 
