@@ -66,7 +66,7 @@ public class DataBase {
             //obtengo numero de columnas
             numColumnas = consulta.getMetaData().getColumnCount();
             //obteniendo los nombres de columnas(claves del hashmap)
-            System.out.println("numero de columnas: "+numColumnas);
+            //System.out.println("numero de columnas: "+numColumnas);
             for (int i = 1; i <= numColumnas; i++) {
                 String nombre =consulta.getMetaData().getColumnName(i);
                 nombresColumnas.add(nombre);
