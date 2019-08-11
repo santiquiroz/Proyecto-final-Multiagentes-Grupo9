@@ -45,7 +45,12 @@ public class ComportamientoNotificador extends TickerBehaviour {
                 msg.setOntology(agent.ontologia.getName());
 
                 String idUser = resultConsult.get(3);
-                String contenido = resultConsult.get(0)+"_"+resultConsult.get(1)+"_"+resultConsult.get(2)+"_"+resultConsult.get(3)+"_"+resultConsult.get(4);
+                
+                String contenido = "Hola residente, este mensaje tiene el consecutivo: "+resultConsult.get(0)
+            	+", fue generado en: "+resultConsult.get(1)
+            	+", su deuda es de: "+resultConsult.get(2)
+            	+", este mensaje tiene por destinatario el residente con id: "+resultConsult.get(3)
+            	+", "+resultConsult.get(4);
 
                 InfoNotificacion infoNot = new InfoNotificacion();
                 infoNot.setIdentificacionUsuario(idUser);
@@ -56,12 +61,26 @@ public class ComportamientoNotificador extends TickerBehaviour {
 
                 agent.getContentManager().fillContent(msg, pInfoNot);
                 agent.send(msg);
+                
+                DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosadmon");
+                String[] datos=infoNot.getContenido().split("_");
+                String cons = resultConsult.get(3);
+                String id = infoNot.getIdentificacionUsuario();
+                
+                //System.out.println(cons+"--------------------------------------------------------------------");
+                //System.out.println(id+"--------------------------------------------------------------------");
+                
+                String update = "UPDATE cobro SET notificado = '1' WHERE cobro.consecutivo = "+cons+" AND cobro.id_usuario = '"+id+"'";
+                db.update(update);
+                
             }
 
         } catch (Codec.CodecException e) {
             e.printStackTrace();
         } catch (OntologyException e) {
             e.printStackTrace();
+        }catch (Exception e) {
+        	e.printStackTrace();
         }
 
     }
@@ -71,8 +90,8 @@ public class ComportamientoNotificador extends TickerBehaviour {
         DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosadmon");
         ArrayList resultado = db.select("SELECT * FROM cobro WHERE notificado = 0");
 
-        int tamaño = ((ArrayList) (resultado.get(0))).size();
-        if (tamaño > 0) {
+        int tamano = ((ArrayList) (resultado.get(0))).size();
+        if (tamano > 0) {
             ArrayList<String> resultadoReduntante = new ArrayList<String>();
             resultadoReduntante.add(db.getValueOn(0, 0));
             resultadoReduntante.add(db.getValueOn(0, 1));

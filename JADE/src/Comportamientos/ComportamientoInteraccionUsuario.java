@@ -60,16 +60,6 @@ public class ComportamientoInteraccionUsuario extends SimpleBehaviour {
                                     infoNot.getContenido()
                             );
                             
-                            DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosadmon");
-                            String[] datos=infoNot.getContenido().split("_");
-                            String cons = datos[0];
-                            String id = infoNot.getIdentificacionUsuario();
-                            
-                            System.out.println(cons+"--------------------------------------------------------------------");
-                            System.out.println(id+"--------------------------------------------------------------------");
-                            
-                            String update = "UPDATE cobro SET notificado = '1' WHERE cobro.consecutivo = "+cons+" AND cobro.id_usuario = '"+id+"'";
-                            db.update(update);
                             
                             Notificacion respuesta = new Notificacion();
                             respuesta.setNotify(infoNot);
