@@ -6,3 +6,5 @@ JADE/configuraciones/mail.cfg
 *.cfg
 /JavaApplication6/nbproject/private/
 /JavaApplication6/build/
+/mandar/nbproject/private/
+/mandar/build/

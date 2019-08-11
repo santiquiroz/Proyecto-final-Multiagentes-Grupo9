@@ -1,8 +1,12 @@
 package Comportamientos;
 
+import com.fazecast.jSerialComm.SerialPort;
 import jade.core.behaviours.*;
 import java.io.IOException;
+import java.io.OutputStream;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -12,47 +16,47 @@ import system.DataBase.DataBase;
 
 @SuppressWarnings("serial")
 public class ComportamientoAutomatizador extends SimpleBehaviour {
-    
-    ConexionArduino arduino;
-    boolean getting = false;
-    
-    //definicion de tarea para analizar valores de ilumina
-    Timer ActionTimer = new Timer();
-    TimerTask ActionTask = new TimerTask() {
-        public void run() {
-            Integer valor = 1;
-            try {
-                arduino.send(valor);
-            } catch (IOException ex) {
-                Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-    };
-    // definicion de tarea para leer el puerto serial del arduino
-    Timer ReceptionTimer = new Timer();
-    TimerTask ReceptionTask = new TimerTask() {
-        public void run() {
-            System.out.println("paso por aqui");
-            System.out.println(arduino.get());
-            //arduino.get();
-        }   
-
-    };
-
-    public ComportamientoAutomatizador() {
-        super();
-        arduino = new ConexionArduino();
-    }
+    String puerto;
+    SerialPort[] portNames;
+    SerialPort sp;
+    Scanner scanner;
 
     @Override
     public void action() {
-        if(!getting){
-            //ReceptionTimer.scheduleAtFixedRate(ReceptionTask,50,50);
-            getting = true;
+        portNames = SerialPort.getCommPorts(); 
+         puerto = portNames[0].getSystemPortName();
+         sp = SerialPort.getCommPort(puerto);
+         sp.setComPortParameters(9600, 8, 1, 0);
+         
+        //mandando solicitud de entrega de datos
+        sp.openPort();
+        OutputStream serialOut = sp.getOutputStream();
+        try {
+            serialOut.write("hola".getBytes());
+            //serialOut.flush();
+        } catch (IOException ex) {
+            Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        arduino.get();
         
+        //sp.closePort();
+        
+        try {
+            sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("ya desperte de suenom");
+        
+        //sp.openPort();
+         scanner = new Scanner(sp.getInputStream());
+         //System.out.println(scanner.next());
+         System.out.println("linea");
+         while(scanner.hasNext()){
+             System.out.println(scanner.nextLine());
+         }
+         
+         //sp.closePort(); 
     }
 
     @Override
