@@ -46,7 +46,7 @@ public class AgenteNotificador extends Agent {
         getContentManager().registerLanguage(codec);
         getContentManager().registerOntology(ontologia);
 
-        ComportamientoNotificador EnviarNotiBehaviour = new ComportamientoNotificador(this, 1000);
+        ComportamientoNotificador EnviarNotiBehaviour = new ComportamientoNotificador(this, 10000);
         addBehaviour(EnviarNotiBehaviour);
 
     }

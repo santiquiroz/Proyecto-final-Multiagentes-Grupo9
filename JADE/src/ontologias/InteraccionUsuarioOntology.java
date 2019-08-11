@@ -9,7 +9,7 @@ import jade.core.CaseInsensitiveString;
 
 /** file: InteraccionUsuarioOntology.java
  * @author ontology bean generator
- * @version 2019/08/10, 16:27:01
+ * @version 2019/08/10, 19:10:01
  */
 public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -32,6 +32,7 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
     public static final String ABRIRPUERTAS="AbrirPuertas";
     public static final String ENCENDERLAMPARA="EncenderLampara";
     public static final String ACTIVARVENTILACION="ActivarVentilacion";
+    public static final String NOTIFICACION_NOTIFY="Notify";
     public static final String NOTIFICACION="Notificacion";
     public static final String INFONOTIFICACION_CONTENIDO="Contenido";
     public static final String INFONOTIFICACION_IDENTIFICACIONUSUARIO="IdentificacionUsuario";
@@ -77,6 +78,7 @@ public class InteraccionUsuarioOntology extends jade.content.onto.Ontology  {
     identidadUsuarioSchema.add(IDENTIDADUSUARIO_TIPOUSUARIO, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     infoNotificacionSchema.add(INFONOTIFICACION_IDENTIFICACIONUSUARIO, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
     infoNotificacionSchema.add(INFONOTIFICACION_CONTENIDO, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
+    notificacionSchema.add(NOTIFICACION_NOTIFY, infoNotificacionSchema, ObjectSchema.OPTIONAL);
     verificacionSchema.add(VERIFICACION_CONTENIDOVERIFICACION, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
     predicadoIdentidadUsuarioSchema.add(PREDICADOIDENTIDADUSUARIO_INSTANCIAIDENTIDADUSUARIO, identidadUsuarioSchema, ObjectSchema.OPTIONAL);
     predicadoInfoNotificacionSchema.add(PREDICADOINFONOTIFICACION_SLOTINFONOTIFICACIO, infoNotificacionSchema, ObjectSchema.OPTIONAL);

@@ -1,4 +1,4 @@
-; Sat Aug 10 16:35:40 COT 2019
+; Sat Aug 10 19:09:49 COT 2019
 ; 
 ;+ (version "3.4.4")
 ;+ (build "Build 579")
@@ -75,6 +75,11 @@
 	(multislot %3AJADE-INCLUDED-PROPERTIES
 		(type INSTANCE)
 ;+		(allowed-classes)
+		(create-accessor read-write))
+	(single-slot Notify
+		(type SYMBOL)
+;+		(allowed-parents InfoNotificacion)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot InstanciaIdentidadUsuario
 ;+		(comment "Contiene una instancia de la identidad de un usuario que haya ingresado al sistema")
@@ -174,13 +179,13 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot %3APACKAGE
-;+		(comment "packagename")
+	(single-slot %3AONTOLOGYNAME
+;+		(comment "name of the ontology")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot %3AONTOLOGYNAME
-;+		(comment "name of the ontology")
+	(single-slot %3APACKAGE
+;+		(comment "packagename")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -214,7 +219,12 @@
 
 (defclass Notificacion "Accion que realiza el AgenteInteraccionUsuario despues de recibir la informacion para las notificaciones"
 	(is-a AgentAction)
-	(role concrete))
+	(role concrete)
+	(single-slot Notify
+		(type SYMBOL)
+;+		(allowed-parents InfoNotificacion)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
 
 (defclass Verificacion
 	(is-a AgentAction)
