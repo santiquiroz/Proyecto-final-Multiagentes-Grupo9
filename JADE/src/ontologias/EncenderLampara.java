@@ -1,16 +1,44 @@
 package ontologias;
 
 
+import com.fazecast.jSerialComm.SerialPort;
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
-   * Activar o desactivar lámpara de la portería según los datos de luminosidad de la portería.
+   * Activar o desactivar lï¿½mpara de la porterï¿½a segï¿½n los datos de luminosidad de la porterï¿½a.
 * Protege name: EncenderLampara
 * @author ontology bean generator
 * @version 2019/08/10, 19:10:01
 */
-public class EncenderLampara implements AgentAction {
 
+public class EncenderLampara implements AgentAction {
+    String puerto;
+    SerialPort[] portNames;
+    SerialPort sp;
+    public EncenderLampara(){
+        super();
+        portNames = SerialPort.getCommPorts();
+        puerto = portNames[0].getSystemPortName();
+        sp = SerialPort.getCommPort(puerto);
+        sp.setComPortParameters(9600, 8, 1, 0); // default connection settings for Arduino
+        sp = SerialPort.getCommPort(puerto);
+        
+        sp.openPort();
+        try {
+            sp.getOutputStream().write(1);
+        } catch (IOException ex) {
+            Logger.getLogger(EncenderLampara.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            sp.getOutputStream().flush();
+        } catch (IOException ex) {
+            Logger.getLogger(EncenderLampara.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }

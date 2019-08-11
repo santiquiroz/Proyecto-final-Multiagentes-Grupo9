@@ -1,29 +1,32 @@
-/*
- * Esta clase permite inicializar todos los actores del proyecto
- */
 package main;
+import com.fazecast.jSerialComm.SerialPortPacketListener;
 
-import actores.MovimientoSensor;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import system.DataBase.DataBase;
+private final class PacketListener implements SerialPortPacketListener
+{
+   @Override
+   public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_RECEIVED; }
 
-/**
- *
- * @author santi
- */
-public class Main {
+   @Override
+   public int getPacketSize() { return 100; }
 
-    public static void main(String[] args) {
-        System.out.println("Inicializando Actores");
-        MovimientoSensor sensormovimiento = new MovimientoSensor();
-        DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosadmon");
-        //db.insert("INSERT INTO `cobro` (`consecutivo`, `fecha`, `cantidad`, `id_usuario`) VALUES ('1234', '2019-08-06 00:00:00', '20.92', 'Santiago')");
-        ArrayList resultado = db.select("SELECT * FROM cobro WHERE 1");
-        System.out.println(String.valueOf(((ArrayList)resultado.get(2)).get(0)));
-    }
-    
+   @Override
+   public void serialEvent(SerialPortEvent event)
+   {
+      byte[] newData = event.getReceivedData();
+      System.out.println("Received data of size: " + newData.length);
+      for (int i = 0; i < newData.length; ++i)
+         System.out.print((char)newData[i]);
+      System.out.println("\n");
+   }
+}
+
+static public void main(String[] args)
+{
+   SerialPort comPort = SerialPort.getCommPorts()[0];
+   comPort.openPort();
+   PacketListener listener = new PacketListener();
+   comPort.addDataListener(listener);
+   try { Thread.sleep(5000); } catch (Exception e) { e.printStackTrace(); }
+   comPort.removeDataListener();
+   comPort.closePort();
 }

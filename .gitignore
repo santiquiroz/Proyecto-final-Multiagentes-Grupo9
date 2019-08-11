@@ -4,3 +4,5 @@
 /Actores/build/
 JADE/configuraciones/mail.cfg
 *.cfg
+/JavaApplication6/nbproject/private/
+/JavaApplication6/build/
