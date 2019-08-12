@@ -10,8 +10,6 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.panamahitek.ArduinoException;
 import com.panamahitek.PanamaHitek_Arduino;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,47 +27,30 @@ public class ClaseDeprueba {
     SerialPort sp;
 
     public ClaseDeprueba() {
-        SerialPortHandler serial = new SerialPortHandler();
-       serial.connect("COM2");
-       OutputStream serialOut = serial.getSerialOutputStream();
-       InputStream serialIn=serial.getSerialInputStream();
-       try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-       String s = "1";
-       byte[] b=new byte[5];
-       for (int i = 0 ; i<10; i++){
-               System.out.println("write " +i%2);
-       	if(i%2==0)
-       		serialOut.write(1);
-       	else
-       		serialOut.write(0);
-       	serialOut.flush();
+        while (true) {
+            System.out.println("Escriba el valor de encendido ");
+            Scanner scanner = new Scanner(System.in);
+            
+            portNames = SerialPort.getCommPorts();
+            puerto = portNames[0].getSystemPortName();
+            sp = SerialPort.getCommPort(puerto);
+            sp.setComPortParameters(9600, 8, 1, 0); // default connection settings for Arduino
+            sp = SerialPort.getCommPort(puerto);
 
-      		try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-       	serialIn.read(b);
-       	System.out.print("Reçu ");
-       	for (int j = 0; j < b.length; j++) {
-				System.out.print(b[j]+ " ");
-			}
-       	System.out.println();
-       	try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            sp.openPort();
+            try {
+                sp.getOutputStream().write(scanner.nextInt());
+            } catch (IOException ex) {
+                Logger.getLogger(ClaseDeprueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                sp.getOutputStream().flush();
+            } catch (IOException ex) {
+                Logger.getLogger(ClaseDeprueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            sp.closePort();
+        }
 
-       }  
-       serial.disconnect();
     }
 
 }

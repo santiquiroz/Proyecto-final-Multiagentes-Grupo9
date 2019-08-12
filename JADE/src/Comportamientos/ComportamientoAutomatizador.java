@@ -5,14 +5,9 @@ import jade.core.behaviours.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import static java.lang.Thread.sleep;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import system.Arduino.ConexionArduino;
-import system.DataBase.DataBase;
 
 @SuppressWarnings("serial")
 public class ComportamientoAutomatizador extends SimpleBehaviour {
@@ -20,43 +15,46 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
     SerialPort[] portNames;
     SerialPort sp;
     Scanner scanner;
-
-    @Override
-    public void action() {
+    
+    public ComportamientoAutomatizador(){
+        super();
         portNames = SerialPort.getCommPorts(); 
          puerto = portNames[0].getSystemPortName();
          sp = SerialPort.getCommPort(puerto);
          sp.setComPortParameters(9600, 8, 1, 0);
+         sp.openPort();
+    }
+
+    @Override
+    public void action() {
+        
          
+        
         //mandando solicitud de entrega de datos
-        sp.openPort();
-        OutputStream serialOut = sp.getOutputStream();
+        
+        OutputStream outputStream = sp.getOutputStream();
         try {
-            serialOut.write("hola".getBytes());
-            //serialOut.flush();
+            outputStream.write(1);
+            outputStream.close();
         } catch (IOException ex) {
             Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //sp.closePort();
-        
         try {
             sleep(100);
-        } catch (InterruptedException ex) {
+       } catch (InterruptedException ex) {
             Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         System.out.println("ya desperte de suenom");
         
-        //sp.openPort();
+            
          scanner = new Scanner(sp.getInputStream());
          //System.out.println(scanner.next());
          System.out.println("linea");
          while(scanner.hasNext()){
              System.out.println(scanner.nextLine());
          }
-         
-         //sp.closePort(); 
     }
 
     @Override
