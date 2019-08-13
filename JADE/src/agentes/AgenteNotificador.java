@@ -15,6 +15,7 @@ import jade.lang.acl.ACLMessage;
 import ontologias.InfoNotificacion;
 import ontologias.InteraccionUsuarioOntology;
 import ontologias.PredicadoInfoNotificacion;
+import Comportamientos.ComportamientoBroadcast;
 import Comportamientos.ComportamientoNotificador;
 
 /**
@@ -48,6 +49,9 @@ public class AgenteNotificador extends Agent {
 
         ComportamientoNotificador EnviarNotiBehaviour = new ComportamientoNotificador(this, 15000);
         addBehaviour(EnviarNotiBehaviour);
+        
+        ComportamientoBroadcast BroadcastBehaviour = new ComportamientoBroadcast(this, 2000);
+        addBehaviour(BroadcastBehaviour);
 
     }
     
