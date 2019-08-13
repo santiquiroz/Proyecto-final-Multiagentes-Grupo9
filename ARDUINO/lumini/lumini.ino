@@ -24,7 +24,7 @@ void setup() {
   pinMode(A2, INPUT);
   pinMode(2, INPUT);
   pinMode(A4, INPUT);
-
+  digitalWrite(7,HIGH); 
   pinMode(7, OUTPUT);
   
   borrarSerial();
@@ -47,6 +47,7 @@ void loop() {
     }
     if (inputUtil == 0) {
         switchLampara();
+        borrarSerial();
     }
     else {
       Serial.println("error");
@@ -100,12 +101,12 @@ void entregarDatos() {
 void switchLampara() {
   
   if(encendido){
-    Serial.println("apagando");
+    //Serial.println("apagando");
     digitalWrite(7,HIGH);
     encendido = false;
   }
   else{
-    Serial.println("encendiendo");
+    //Serial.println("encendiendo");
     digitalWrite(7,LOW);
     encendido = true;
     
