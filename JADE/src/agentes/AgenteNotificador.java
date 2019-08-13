@@ -50,8 +50,8 @@ public class AgenteNotificador extends Agent {
         ComportamientoNotificador EnviarNotiBehaviour = new ComportamientoNotificador(this, 15000);
         addBehaviour(EnviarNotiBehaviour);
         
-        ComportamientoBroadcast BroadcastBehaviour = new ComportamientoBroadcast(this, 2000);
-        //addBehaviour(BroadcastBehaviour);
+        ComportamientoBroadcast BroadcastBehaviour = new ComportamientoBroadcast(this, 10000);
+        addBehaviour(BroadcastBehaviour);
 
     }
     

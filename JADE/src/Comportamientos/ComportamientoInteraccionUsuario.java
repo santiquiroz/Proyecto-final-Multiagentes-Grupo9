@@ -30,7 +30,7 @@ public class ComportamientoInteraccionUsuario extends SimpleBehaviour {
     @Override
     public void action() {
         System.out.println("\n Esperando mensaje del agenteNotificador...");
-
+        
         MessageTemplate mt = MessageTemplate.and(
                 MessageTemplate.MatchLanguage(codec.getName()),
                 MessageTemplate.MatchOntology(ontologia.getName())
@@ -48,16 +48,36 @@ public class ComportamientoInteraccionUsuario extends SimpleBehaviour {
                         if (ce instanceof PredicadoInfoNotificacion) {
                             PredicadoInfoNotificacion pInfoNot = (PredicadoInfoNotificacion) ce;
                             InfoNotificacion infoNot = pInfoNot.getSlotInfoNotificacio();
+                            
                             //System.out.println("Mensaje recibido:");
                             //System.out.println("Identificacion Usuario:" + infoNot.getIdentificacionUsuario());
                             //System.out.println("contenido Mensaje:" + infoNot.getContenido());
 
                             //Compramos
                             
+                            String contenido = infoNot.getContenido();
+                            String[] contenido_spliteado = contenido.split(" ");
+                            
+                            for (int i = 0; i<contenido_spliteado.length; i++){
+                                System.out.println("La posicion "+ i +" de este desagradable infeccion");
+                                System.out.println(contenido_spliteado[i]);
+                            }
+                            
+                            String asunto = "Este mensaje tuvo un error en la identificacion del tipo de notificacion";
+                            //Este contenido tiene  caracteristicas de cobro
+                            if ( contenido_spliteado[2].equals("este")){
+                                asunto = "Pague la cuota de la unidad";
+                            //este contenido tiene caracteristicas broadcast
+                            }else if ( contenido_spliteado[2].equals("le")){
+                                asunto = "Evento de copropietarios";
+                            }
+                            
+                            
+                                                        
                             new MailSender().send(
                                     "dospinao@unal.edu.co",
-                                    "Pague la cuota de la unidad",
-                                    infoNot.getContenido()
+                                    asunto,
+                                    contenido
                             );
                             
                             

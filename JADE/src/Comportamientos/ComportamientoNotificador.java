@@ -63,9 +63,10 @@ public class ComportamientoNotificador extends TickerBehaviour {
                 agent.send(msg);
                 
                 DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosadmon");
-                String[] datos=infoNot.getContenido().split("_");
+                String[] datos = infoNot.getContenido().split("_");
                 String cons = resultConsult.get(0);
                 String id = infoNot.getIdentificacionUsuario();
+                
                 
                 //System.out.println(cons+"--------------------------------------------------------------------");
                 //System.out.println(id+"--------------------------------------------------------------------");
@@ -101,6 +102,9 @@ public class ComportamientoNotificador extends TickerBehaviour {
             return resultadoReduntante;
         }
         return null;
-
+    }
+    
+    public String getEncabezado(){
+        return "Pague la cuenta de la unidad.";
     }
 }
