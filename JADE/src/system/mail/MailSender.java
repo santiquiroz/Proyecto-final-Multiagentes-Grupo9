@@ -46,12 +46,12 @@ public class MailSender {
         SMTP_SERVER_PORT = "465";
         
 
-        EMAIL_FROM = "santiqupgui@gmail.com";
-        EMAIL_TO = "dospinao@unal.edu.co, squirozu@unal.edu.co";
+        EMAIL_FROM = "";
+        EMAIL_TO = "";
         EMAIL_TO_CC = "";
 
-        EMAIL_SUBJECT = "Test Send Email via SMTP";
-        EMAIL_TEXT = "Hello Java Mail \n ABC123";
+        EMAIL_SUBJECT = "";
+        EMAIL_TEXT = "";
         BufferedReader bf;
         try {
             bf = new BufferedReader(new FileReader("configuraciones/mail.cfg"));
@@ -77,6 +77,9 @@ public class MailSender {
     
 
     public void send(String para, String subject, String content) {
+        this.EMAIL_TO = para;
+        this.EMAIL_SUBJECT = subject;
+        
         try {
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp");

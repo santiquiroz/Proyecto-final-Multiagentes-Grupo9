@@ -49,8 +49,7 @@ public class ComportamientoNotificador extends TickerBehaviour {
                 String contenido = "Hola residente, este mensaje tiene el consecutivo: "+resultConsult.get(0)
             	+", fue generado en: "+resultConsult.get(1)
             	+", su deuda es de: "+resultConsult.get(2)
-            	+", este mensaje tiene por destinatario el residente con id: "+resultConsult.get(3)
-            	+", "+resultConsult.get(4);
+            	+", este mensaje tiene por destinatario el residente con id: "+resultConsult.get(3);
 
                 InfoNotificacion infoNot = new InfoNotificacion();
                 infoNot.setIdentificacionUsuario(idUser);
@@ -71,9 +70,8 @@ public class ComportamientoNotificador extends TickerBehaviour {
                 //System.out.println(cons+"--------------------------------------------------------------------");
                 //System.out.println(id+"--------------------------------------------------------------------");
                 
-                String update = "UPDATE cobro SET notificado = '1' WHERE cobro.consecutivo = "+cons+" AND cobro.id_usuario = '"+id+"'";
-                db.update(update);
-                
+                String update = "UPDATE cobro SET notificado = '1' WHERE cobro.consecutivo = " + cons + " AND cobro.id_usuario = '" + id + "'";
+                db.update(update);     
             }
 
         } catch (Codec.CodecException e) {
@@ -102,9 +100,5 @@ public class ComportamientoNotificador extends TickerBehaviour {
             return resultadoReduntante;
         }
         return null;
-    }
-    
-    public String getEncabezado(){
-        return "Pague la cuenta de la unidad.";
     }
 }
