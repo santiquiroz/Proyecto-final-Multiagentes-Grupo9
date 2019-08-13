@@ -64,7 +64,7 @@ public class ComportamientoNotificador extends TickerBehaviour {
                 
                 DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosadmon");
                 String[] datos=infoNot.getContenido().split("_");
-                String cons = resultConsult.get(3);
+                String cons = resultConsult.get(0);
                 String id = infoNot.getIdentificacionUsuario();
                 
                 //System.out.println(cons+"--------------------------------------------------------------------");
