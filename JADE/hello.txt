@@ -1,1 +1,1 @@
-b'luminosidad=35.00,gente=  1,correo=1.00\r\n'
+b'luminosidad=35.00,gente=  0,correo=1.00\r\n'

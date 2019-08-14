@@ -9,7 +9,7 @@ import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
 import ontologias.InfoNotificacion;
 import ontologias.PredicadoInfoNotificacion;
-import sun.management.resources.agent;
+//import sun.management.resources.agent;
 import system.DataBase.DataBase;
 
 public class ComportamientoBroadcast extends TickerBehaviour {

@@ -59,6 +59,7 @@ public class ManipularArchivo {
             BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
             bw.write(datos);
             bw.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
