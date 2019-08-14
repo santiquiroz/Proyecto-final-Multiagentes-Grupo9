@@ -20,7 +20,7 @@ FUZZIFY luminocidad
     TERM SinLuz := (737,0) (878,1) (1024,1);
 END_FUZZIFY
 
-// Fuzzify input variable 'la concha colorada de la lora presnesia PRESNESIA PRESNESIA'
+// Fuzzify input variable 'presnecia'
 FUZZIFY presencia
     TERM SinPersonas := (-1,1) (0.99,1) (1,0);
     TERM ConPersonas := (0.99,0) (1,1) (15,1);

@@ -16,8 +16,9 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
 //    SerialPort sp;
 //    Scanner scanner;
     // variable para saber si el estado del sensor de correo cambio de 1.0 a 0.0.
-
-    boolean cambio = false;
+    
+    LogicaDifusa ld;
+    boolean cambio = false, bombillaEncendida = false;
     int anterior, presente;
     DataBase db;
     //PythonInterpreter interpreter;
@@ -36,12 +37,39 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
 
     @Override
     public void action() {
+        double x=-11111.0000000000;
         try {
             ManipularArchivo ma = new ManipularArchivo();
-
-            ma.write("hello.txt", "1");
-            sleep(5000);
-            String datos = ma.leerArchivo("hello.txt");
+            
+            // desidiendo si se manda la peticion de datos o de que la lampara se encienda
+            db = new DataBase("jdbc:mysql://localhost:3306/datosambientales");
+            db.select("SELECT datetimemilis,valor FROM luminosidad WHERE datetimemilis = (SELECT MAX(datetimemilis)FROM luminosidad)");
+            if (!(db.getLastResult().isEmpty())) {
+                String luminosidadAnterior = db.getValueOn(0, 1);
+                db = new DataBase("jdbc:mysql://localhost:3306/datosambientales");
+                db.select("SELECT datetimemilis,valor FROM movimiento WHERE datetimemilis = (SELECT MAX(datetimemilis)FROM movimiento)");
+                if (!(db.getLastResult().isEmpty())) {
+                    String genteAnterior = db.getValueOn(0, 1);
+                    x = fuzzificar(luminosidadAnterior, genteAnterior);
+                }
+            }
+            
+            if (x>=1 && x!=-11111.0000000000 && bombillaEncendida==false) {
+                
+                
+                ma.write("hello.txt", "0");
+                //sleep(1000);
+                this.bombillaEncendida = true;
+            }
+            else if (x<1 && x!=-11111.0000000000 && bombillaEncendida) {
+                ma.write("hello.txt", "0");
+                //sleep(1000);
+                this.bombillaEncendida = false;
+            }
+            
+                ma.write("hello.txt", "1");
+                sleep(2000);
+                String datos = ma.leerArchivo("hello.txt");
             if ((datos.equals("1") == false) && (datos.equals("0") == false) && (datos.equals(null) == false) && (datos.equals("") == false) && (datos.isEmpty() == false)) {
                 int meow = datos.length();
                 String datos2 = datos.substring(2, meow - 6);
@@ -75,16 +103,18 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
                 }
                 anterior = presente;
 
-                fuzzificar(luminosidad, gente);
+                
 
             }
-
+        
         } catch (Exception e) {
             e.printStackTrace();
         }
+            
     }
 
-    public void fuzzificar(String luminosidad, String presencia) {
+    public double fuzzificar(String luminosidad, String presencia) {
+        double x = -11111.0000000000;
         try{
         float lumini;
         lumini = Float.parseFloat(luminosidad);
@@ -93,17 +123,20 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
         lumini2 = (int) lumini;
         
         
-        int gente = Integer.valueOf(presencia.replace(" ", ""));
+        int gente = Math.round(Float.valueOf(presencia));
         
         System.out.println(lumini2);
-            System.out.println(gente);
+        System.out.println(gente);
         
-        LogicaDifusa ld = new LogicaDifusa();
-        ld.iluminar(lumini2,gente);
+        ld = new LogicaDifusa();
+        x = ld.iluminar(lumini2,gente);
+        
+        
         
         }catch(Exception e){
             e.printStackTrace();
         }
+        return x;
     }
 
     @Override

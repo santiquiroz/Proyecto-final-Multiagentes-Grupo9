@@ -22,23 +22,6 @@ public class EncenderLampara implements AgentAction {
     SerialPort sp;
     public EncenderLampara(){
         super();
-        portNames = SerialPort.getCommPorts();
-        puerto = portNames[0].getSystemPortName();
-        sp = SerialPort.getCommPort(puerto);
-        sp.setComPortParameters(9600, 8, 1, 0); // default connection settings for Arduino
-        sp = SerialPort.getCommPort(puerto);
-        
-        sp.openPort();
-        try {
-            sp.getOutputStream().write(1);
-        } catch (IOException ex) {
-            Logger.getLogger(EncenderLampara.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            sp.getOutputStream().flush();
-        } catch (IOException ex) {
-            Logger.getLogger(EncenderLampara.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+       
     }
 }
