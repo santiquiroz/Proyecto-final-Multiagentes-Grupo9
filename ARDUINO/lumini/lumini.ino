@@ -23,7 +23,7 @@ void setup() {
   //configurando el puerto A2 para entrada de datos para luminisencia
   pinMode(A2, INPUT);
   pinMode(2, INPUT);
-  pinMode(A4, INPUT);
+  pinMode(4, INPUT);
   digitalWrite(7,HIGH); 
   pinMode(7, OUTPUT);
   
@@ -70,7 +70,7 @@ void entregarDatos() {
   //leyendo e imprimiendo los datos por medio del puerto serial.
   lumin = analogRead(A2);
   gente = digitalRead(2);
-  correo = analogRead(A4);
+  correo = digitalRead(4);
   //Serial.print("luminosidad: ");
   //V = analogRead(A2);
 
@@ -85,16 +85,8 @@ void entregarDatos() {
   //Serial.print("correo: ");
 
   String datosImpresion = "";
-  datosImpresion = datosImpresion + "luminosidad=" + lumin + "," + "gente:" + gente + ",";
+  datosImpresion = datosImpresion + "luminosidad=" + lumin + "," + "gente=  " + gente + ","+"correo="+correo;
 
-  if (correo > 1021) {
-    //Serial.println(1);
-    datosImpresion = datosImpresion + "correo:" + 1;
-  }
-  else {
-    //Serial.println(0);
-    datosImpresion = datosImpresion + "correo:" + 0;
-  }
   Serial.println(datosImpresion);
 }
 
