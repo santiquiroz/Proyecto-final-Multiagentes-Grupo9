@@ -14,7 +14,14 @@ import ontologias.IdentidadUsuario;
 import ontologias.InteraccionUsuarioOntology;
 import ontologias.PredicadoIdentidadUsuario;
 import jade.lang.acl.*;
-
+import java.awt.Dimension;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import ontologias.Notificacion;
+import ontologias.Verificacion;
+import system.DataBase.DataBase;
 
 /**
  *
@@ -26,7 +33,6 @@ public class ComportamientoIdentificador extends SimpleBehaviour {
     public Ontology ontologia = InteraccionUsuarioOntology.getInstance();
 
     AgenteIdentificador agent;
-    
 
     public ComportamientoIdentificador(Agent a) {
         super(a);
@@ -59,7 +65,49 @@ public class ComportamientoIdentificador extends SimpleBehaviour {
                             IdentidadUsuario ideUser = pIdentUser.getInstanciaIdentidadUsuario();
                             System.out.println("Mensaje recibido:");
                             System.out.println("Rol/Identificacion: " + ideUser.getTipoUsuario());
+
+                            DataBase db = new DataBase("jdbc:mysql://localhost:3306/datosusuario");
+                            String identify = ideUser.getTipoUsuario();
+                            ArrayList resultado = db.select("SELECT rol FROM usuario WHERE identificacion = '" + identify + "'");
+
+                            System.out.println(db.select("SELECT rol FROM usuario WHERE identificacion = '" + identify + "'"));
                             
+                            String mensaje = "No esta registrado en el sistema. Es un visitante";
+                            
+                            if (((ArrayList) resultado.get(0)).size() == 0) {
+                                System.out.println(((ArrayList) resultado.get(0)).size());
+                                
+                            } else {
+                                String resultadoRedundante = db.getValueOn(0, 0);
+                                System.out.println("El rol es: " + resultadoRedundante);
+                                
+                                if (resultadoRedundante.equals("propietario")) {
+                                    mensaje = "Hola, persona identificada como " + identify + ", usted es un PROPIETARIO";
+                                } else if (resultadoRedundante.equals("portero")) {
+                                    mensaje = "Hola, persona identificada como " + identify + ", usted es un " + resultadoRedundante;
+                                } else {
+                                    mensaje = "No esta registrado en el sistema. Es un visitante";
+                                }
+                            }
+                            System.out.println(mensaje);
+                            Verificacion respuesta = new Verificacion();
+                            respuesta.setContenidoVerificacion(mensaje);
+                            ACLMessage msg2 = new ACLMessage(ACLMessage.REQUEST);
+                            msg2.setLanguage(codec.getName());
+                            msg2.setOntology(ontologia.getName());
+                            msg2.setSender(agent.getAID());
+                            msg2.addReceiver(msg.getSender());
+                            agent.getContentManager().fillContent(msg2, respuesta);
+                            agent.send(msg2);
+                            System.out.println("Verificacion Enviada.");
+
+                            System.out.println();
+                            
+                            //Ventana machete e
+                            ventanaMachete v = new ventanaMachete();
+                            v.jLabel1.setText(mensaje);
+                            v.repaint();
+                            //
 
                         } else {
                             // Recibido un INFORM con contenido incorrecto
@@ -84,7 +132,7 @@ public class ComportamientoIdentificador extends SimpleBehaviour {
             System.out.println(ce);
         } catch (jade.content.onto.OntologyException oe) {
             System.out.println(oe);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -116,11 +164,24 @@ public class ComportamientoIdentificador extends SimpleBehaviour {
 
             agent.getContentManager().fillContent(msg, pIdeUser);
             agent.send(msg);
-            //CodecException
+
+            //CodecException   
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+    
+    public class ventanaMachete extends JFrame{
+            public javax.swing.JLabel jLabel1 = new JLabel("Metas aca tu ID");
+
+        public ventanaMachete(){
+            super("Identificacion completada");
+            jLabel1.setPreferredSize(new Dimension(400, 30));
+            this.add(jLabel1);
+            this.pack();
+            this.setVisible(true);
+        }
     }
 
 }

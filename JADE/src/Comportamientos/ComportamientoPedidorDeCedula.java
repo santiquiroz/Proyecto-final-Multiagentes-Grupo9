@@ -19,17 +19,19 @@ public class ComportamientoPedidorDeCedula extends OneShotBehaviour {
 
     //AgenteInteraccionUsuario agent;
     AgenteInteraccionUsuarioII agent;
+    String identificacion;
 
-    public ComportamientoPedidorDeCedula(Agent a) {
+    public ComportamientoPedidorDeCedula(Agent a, String idetif) {
         super(a);
         agent = (AgenteInteraccionUsuarioII) a;
+        this.identificacion = idetif ;
     }
 
     @Override
     public void action() {
         System.out.println("EnTRO A METODO --------------- ENTRO A METODO");
         //Implementacion(o llamada de) de la interface grafica
-        String identificacion = "Esta cedula debería ser immpresa en alguna parte";
+         
         
         try {
             

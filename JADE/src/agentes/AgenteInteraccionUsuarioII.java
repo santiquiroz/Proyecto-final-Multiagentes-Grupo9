@@ -5,7 +5,9 @@
  */
 package agentes;
 
+import interfaz.InteraccionUsuario2;
 import Comportamientos.ComportamientoPedidorDeCedula;
+import interfaz.*;
 import jade.content.lang.Codec;
 import jade.content.lang.sl.SLCodec;
 import jade.content.onto.Ontology;
@@ -20,13 +22,13 @@ import ontologias.InteraccionUsuarioOntology;
  *
  * @author David Ospina
  */
-public class AgenteInteraccionUsuarioII extends Agent{
+public class AgenteInteraccionUsuarioII extends Agent {
+
     public Codec codec = new SLCodec();
     public Ontology ontologia = InteraccionUsuarioOntology.getInstance();
-    
-    
-     protected void setup() {
-         DFAgentDescription dfd = new DFAgentDescription();
+
+    protected void setup() {
+        DFAgentDescription dfd = new DFAgentDescription();
         ServiceDescription sd = new ServiceDescription();
         sd.setType("Interfaz");
         sd.setName(getName());
@@ -39,12 +41,17 @@ public class AgenteInteraccionUsuarioII extends Agent{
             System.err.println(getLocalName() + " registration with DF unsucceeded. Reason: " + e.getMessage());
             doDelete();
         }
-        
+
         getContentManager().registerLanguage(codec);
         getContentManager().registerOntology(ontologia);
-        
-        ComportamientoPedidorDeCedula cedular = new ComportamientoPedidorDeCedula(this);
+
+        InteraccionUsuario2 ventana = new InteraccionUsuario2(this);
+
+    }
+
+    public void addPedidorCedula(String identifica) {
+        ComportamientoPedidorDeCedula cedular = new ComportamientoPedidorDeCedula(this,identifica);
         addBehaviour(cedular);
         System.out.println("Al menos meti behaviur 3");
-     }
+    }
 }
