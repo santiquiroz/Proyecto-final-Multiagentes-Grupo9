@@ -75,21 +75,14 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
                 }
                 anterior=presente;
                 
-                fuzzificar(luminosidad, gente); 
                 
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
-    
-    public void fuzzificar(String luminosidad, String presencia ){
-            int lumini;
-            lumini = Integer.parseInt(luminosidad);
-            System.out.println(lumini);           
-            
-        }
 
     @Override
     public boolean done() {
