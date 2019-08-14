@@ -122,7 +122,33 @@ public class ComportamientoInteraccionUsuario extends SimpleBehaviour {
                                         asunto,
                                         contenido
                                 );
-                            }//else if (contenido_spliteado[2].equals())
+                            } else if (contenido_spliteado[2].equals("tiene")){
+                                asunto = "Buzon de Correspondencia";
+                                
+                                ArrayList resultadocorrespondencia = db.select("SELECT * FROM usuario WHERE apartamento = " + contenido_spliteado[8]);
+                                int nroUsers = ((ArrayList)resultadocorrespondencia.get(0)).size(); 
+                                String correocorrespondencia = "";
+                                
+                                for (int i = 0; i < nroUsers; i++) {
+                                    if(i < nroUsers){
+                                        correocorrespondencia = correocorrespondencia + db.getValueOn(i,1) + ",";
+                                    }else{
+                                        correocorrespondencia = correocorrespondencia + db.getValueOn(i,1); 
+                                    }
+                                } 
+                                
+                                System.out.println("los correos xd ------------------------------------------------------");
+                                System.out.println(contenido_spliteado[8]);
+                                System.out.println(nroUsers);
+                                System.out.println(correocorrespondencia);
+
+                                MailSender mail = new MailSender();
+                                mail.send(
+                                        correocorrespondencia,
+                                        asunto,
+                                        contenido
+                                );
+                            }
 
 
                             Notificacion respuesta = new Notificacion();

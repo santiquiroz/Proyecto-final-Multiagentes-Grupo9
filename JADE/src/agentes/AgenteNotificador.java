@@ -17,6 +17,7 @@ import ontologias.InteraccionUsuarioOntology;
 import ontologias.PredicadoInfoNotificacion;
 import Comportamientos.ComportamientoBroadcast;
 import Comportamientos.ComportamientoNotificador;
+import Comportamientos.ComportamientoCorrespondencia;
 
 /**
  *
@@ -52,7 +53,9 @@ public class AgenteNotificador extends Agent {
         
         ComportamientoBroadcast BroadcastBehaviour = new ComportamientoBroadcast(this, 10000);
         addBehaviour(BroadcastBehaviour);
-
+        
+        ComportamientoCorrespondencia CorresondenciaBehaviour = new ComportamientoCorrespondencia(this, 10000);
+        addBehaviour(CorresondenciaBehaviour);
     }
     
 }
