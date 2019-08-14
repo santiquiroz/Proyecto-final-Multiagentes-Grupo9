@@ -1,32 +1,30 @@
 package agentes;
 
 import Comportamientos.ComportamientoIdentificador;
+import jade.content.lang.Codec;
+import jade.content.lang.sl.SLCodec;
+import jade.content.onto.Ontology;
 import jade.core.Agent;
+import ontologias.InteraccionUsuarioOntology;
 
 /**
  *
- * @author santi    
+ * @author santiQuiroz
  */
-public class AgenteIdentificador extends Agent{
-    
+public class AgenteIdentificador extends Agent {
+
+    public Codec codec = new SLCodec();
+    public Ontology ontologia = InteraccionUsuarioOntology.getInstance();
+
     @Override
     protected void setup() {
+
+        getContentManager().registerLanguage(codec);
+        getContentManager().registerOntology(ontologia);
         
-        /**
-         * Esta linea se utiliza cuando se envian parametros desde
-         * la declaracion de los argumentos
-        
-        String argumentos;
-        Object[] args = getArguments();
-        argumentos = args[0].toString();
-        if (argumentos.equals("terminar agente")){            
-            System.out.println("terminando agente");   
-            doDelete();
-        }
-        
-        */
-        
-        addBehaviour(new ComportamientoIdentificador(this));
-        
+        ComportamientoIdentificador identifBehaviour;
+        identifBehaviour = new ComportamientoIdentificador(this);
+        addBehaviour(identifBehaviour);
+
     }
 }
