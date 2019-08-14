@@ -9,10 +9,10 @@ import jade.core.behaviours.*;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 
-
-import org.python.core.PyObject; 
-import org.python.core.PyString; 
-import org.python.util.PythonInterpreter; 
+import org.python.core.PyObject;
+import org.python.core.PyString;
+import org.python.util.PythonInterpreter;
+import system.DataBase.ManipularArchivo;
 
 @SuppressWarnings("serial")
 public class ComportamientoAutomatizador extends SimpleBehaviour {
@@ -20,49 +20,29 @@ public class ComportamientoAutomatizador extends SimpleBehaviour {
 //    SerialPort[] portNames;
 //    SerialPort sp;
 //    Scanner scanner;
-    PythonInterpreter interpreter;
-    public ComportamientoAutomatizador(){
-        super();
-//        portNames = SerialPort.getCommPorts(); 
-//         puerto = portNames[0].getSystemPortName();
-//         sp = SerialPort.getCommPort(puerto);
-//         sp.setComPortParameters(9600, 8, 1, 0);
-//         sp.openPort();
 
-         interpreter = new PythonInterpreter();
-         interpreter.exec("pyarduino.py");
+    PythonInterpreter interpreter;
+
+    public ComportamientoAutomatizador() {
+        super();
+        try {
+            ManipularArchivo ma = new ManipularArchivo();
+            ma.write("hello.txt", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void action() {
-        
-         
-        
-        //mandando solicitud de entrega de datos
-        
-//        OutputStream outputStream = sp.getOutputStream();
-//        try {
-//            outputStream.write(1);
-//            outputStream.close();
-//        } catch (IOException ex) {
-//            Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        try {
-//            sleep(100);
-//       } catch (InterruptedException ex) {
-//            Logger.getLogger(ComportamientoAutomatizador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        System.out.println("ya desperte de suenom");
-//        
-//            
-//         scanner = new Scanner(sp.getInputStream());
-//         //System.out.println(scanner.next());
-//         System.out.println("linea");
-//         while(scanner.hasNext()){
-//             System.out.println(scanner.nextLine());
-//         }
+        try {
+            ManipularArchivo ma = new ManipularArchivo();
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
