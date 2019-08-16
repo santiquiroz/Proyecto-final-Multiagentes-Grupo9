@@ -33,7 +33,7 @@ public class LogicaDifusa {
         fis.evaluate();
 
         // Show
-        JFuzzyChart.get().chart(fis.getFunctionBlock("fuzzy"));
+        //JFuzzyChart.get().chart(fis.getFunctionBlock("fuzzy"));
         
 
         Double x = fis.getVariable("activacion").getLatestDefuzzifiedValue();
